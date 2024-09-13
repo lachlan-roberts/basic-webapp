@@ -8,23 +8,12 @@
 
   <display-name>Basic Webapp</display-name>
 
-  <!-- Create mapping for the Servlet. -->
   <servlet>
-    <servlet-name>BasicServlet</servlet-name>
-    <servlet-class>org.example.BasicServlet</servlet-class>
+    <servlet-name>DemoServlet</servlet-name>
+    <servlet-class>org.example.DemoServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>BasicServlet</servlet-name>
-    <url-pattern> </url-pattern>
-  </servlet-mapping>
-
-  <!-- Create mapping for the JSP file. -->
-  <servlet>
-    <servlet-name>DemoJsp</servlet-name>
-    <jsp-file>/WEB-INF/jsp/demo.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DemoJsp</servlet-name>
-    <url-pattern>/demo</url-pattern>
+    <servlet-name>DemoServlet</servlet-name>
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
 </web-app>

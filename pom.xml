@@ -11,13 +11,14 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jetty.version>12.0.13</jetty.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>jakarta.servlet</groupId>
       <artifactId>jakarta.servlet-api</artifactId>
-      <version>4.0.4</version>
+      <version>6.0.0</version>
       <scope>provided</scope>
     </dependency>
 
@@ -33,14 +34,40 @@
       <version>2.2</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-client</artifactId>
+      <version>${jetty.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-slf4j-impl</artifactId>
+      <version>${jetty.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty.ee10</groupId>
+      <artifactId>jetty-ee10-webapp</artifactId>
+      <version>${jetty.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
+    <finalName>basic-webapp</finalName>
     <plugins>
       <plugin>
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-maven-plugin</artifactId>
-        <version>10.0.11</version>
+        <groupId>org.eclipse.jetty.ee10</groupId>
+        <artifactId>jetty-ee10-maven-plugin</artifactId>
+        <version>${jetty.version}</version>
+        <configuration>
+          <deployMode>EXTERNAL</deployMode>
+          <jettyProperties>
+            <jetty.server.dumpAfterStart>false</jetty.server.dumpAfterStart>
+          </jettyProperties>
+<!--          <jvmArgs>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005</jvmArgs>-->
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
